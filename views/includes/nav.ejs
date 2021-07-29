@@ -1,35 +1,47 @@
-<nav class="bg-gray-800">
-    <div class="container flex">
-        <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative group">
-            <span class="text-white">
-                <i class="fas fa-bars"></i>
-            </span>
-
-            <span class="capitalize ml-2 text-white">All categories</span>
-            <div class="absolute w-full left-0 top-full bg-white shadow-md divide-y divide-gray-300 opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible">
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                    <img src="/images/icon.png" alt="icon" class="w-5 h-5 object-contain">
-                    <span class="ml-6 text-gray-600 text-sm">Electric</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                    <img src="/images/icon.png" alt="icon" class="w-5 h-5 object-contain">
-                    <span class="ml-6 text-gray-600 text-sm">Electric</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-gray-100 transition">
-                    <img src="/images/icon.png" alt="icon" class="w-5 h-5 object-contain">
-                    <span class="ml-6 text-gray-600 text-sm">Electric</span>
-                </a>
+<nav class="bg-gray-800 text-white">
+    <div class="container mx-auto flex justify-center md:justify-between py-3">
+        <div class="flex">
+            <!--Primary menu-->
+            <div class="hidden md:flex items-center">
+                <a class="mr-5" href="/">Home</a>
+                <a class="mr-5" href="/shop">Shop</a>
+                <a class="mr-5" href="#">About Us</a>
+                <a class="mr-5" href="#">Contact</a>
             </div>
         </div>
+        <!--Secondary menu-->
+        <div class="hidden md:flex items-center">
+            <a class="ml-5" href="#">Acustic</a>
+            <a class="ml-5" href="#">Electric</a>
+            <a class="ml-5" href="#">Accesories</a>
+        </div>
 
-        <div class="hidden md:flex items-center justify-between flex-grow pl-12">
-            <div class="flex items-center space-x-6 capitalize">
-                <a href="/" class="text-gray-200 hover:text-white transition">Home</a>
-                <a href="/shop" class="text-gray-200 hover:text-white transition">Shop</a>
-                <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
-                <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a>
-            </div>
-            <a href="#" class="text-gray-200 hover:text-white transition">Login/Signup</a>
+        <!--mobile button-->
+        <div class="md:hidden flex items-center">
+            <button id="btn">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
         </div>
     </div>
+    <!--Mobile menu-->
+    <div class="hidden md:hidden container" id="mobile-menu">
+        <a class="text-center block py-2" href="/">Home</a>
+        <a class="text-center block py-2" href="/shop">Shop</a>
+        <a class="text-center block py-2" href="#">About Us</a>
+        <a class="text-center block py-2" href="#">Contact</a>
+        <p class="text-center mt-2 text-gray-500">Categories:</p>
+        <a class="text-center block py-2" href="#">Acustic</a>
+        <a class="text-center block py-2" href="#">Electric</a>
+        <a class="text-center block pt-2 pb-4" href="#">Accesories</a>
+    </div>
+    <script>
+        // toggle button for small screens
+        const btn = document.getElementById("btn");
+        const menu = document.getElementById("mobile-menu");
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
 </nav>
