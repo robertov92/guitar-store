@@ -1,2 +1,3 @@
 node_modules/
-public/css/tailwind
+# generate the css file with npm run build:css
+public/css/tailwind.css
