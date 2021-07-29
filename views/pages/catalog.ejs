@@ -1,0 +1,100 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<!-- breadcrums -->
+<div class="container py-4 flex items-center gap-3">
+    <%- include('../includes/breadcrum.ejs') %>
+    <p class="text-gray-600 font-medium">Shop</p>
+</div>
+
+<!-- shop wrapper -->
+<div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start">
+    <!--sidebar-->
+    <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden">
+        <div class="divide-y divide-gray-200 space-y-5">
+            <!--category filter-->
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">categories</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">category 1</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-2" class="text-gray-600 ml-3 cursor-pointer">category 2</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-3" class="text-gray-600 ml-3 cursor-pointer">category 3</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-4" class="text-gray-600 ml-3 cursor-pointer">category 4</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                </div>
+            </div>
+            <!--brands filter-->
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">brands</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="brand-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="brand-1" class="text-gray-600 ml-3 cursor-pointer">brand 1</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="brand-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="brand-2" class="text-gray-600 ml-3 cursor-pointer">brand 2</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="brand-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="brand-3" class="text-gray-600 ml-3 cursor-pointer">brand 3</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="brand-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="brand-4" class="text-gray-600 ml-3 cursor-pointer">brand 4</label>
+                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                    </div>
+                </div>
+            </div>
+            <!--price filter-->
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">price</h3>
+                <div class="mt-4 flex items-center">
+                    <input id="min-price" type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="min">
+                    <span class="mx-3 text-gray-500">-</span>
+                    <input id="max-price" type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="max">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--products-->
+    <div class="col-span-3">
+        <div class="grid grid-cols-3 gap-6">
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+            <%- include('../includes/product-sm.ejs') %> 
+        </div>
+
+    </div>
+</div>
+
+<%- include('../includes/end.ejs') %>
