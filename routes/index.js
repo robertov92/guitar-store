@@ -3,7 +3,7 @@ const shopControllers = require('../controllers/index');
 
 routes.get('/shop', shopControllers.getCatalog);
 
-routes.get('/shop/productId', shopControllers.getProduct);
+routes.get('/shop/:productId', shopControllers.getProduct);
 
 routes.get('/checkout', shopControllers.getCart)
 

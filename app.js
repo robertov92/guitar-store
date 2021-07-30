@@ -7,8 +7,6 @@ const mongoose = require('mongoose');
 const shopRoutes = require('./routes');
 const accountRoutes = require('./routes/account');
 
-
-
 const app = express();
 
 app.use(express.static('public'))
