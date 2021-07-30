@@ -1,10 +1,8 @@
+require('dotenv/config');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-const PORT = 3000;
-const MONGODB_URI = 'mongodb+srv://roberto:Unoyuno5@cluster0.zwdeu.mongodb.net/Project3?retryWrites=true&w=majority';
 
 const shopRoutes = require('./routes');
 const accountRoutes = require('./routes/account');
@@ -18,9 +16,9 @@ app.use(express.static('public'))
     .use('/account', accountRoutes)
     .use('/', shopRoutes);
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Listening on port ${PORT}`)
+        app.listen(process.env.PORT, () => {
+            console.log(`Listening on port ${process.env.PORT}`)
         });
     });
