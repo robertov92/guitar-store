@@ -1,12 +1,13 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const port = 3000;
+const mongoose = require('mongoose');
+
+const PORT = 3000;
+const MONGODB_URI = 'mongodb+srv://roberto:Unoyuno5@cluster0.zwdeu.mongodb.net/Project3?retryWrites=true&w=majority';
 
 const shopRoutes = require('./routes');
 const accountRoutes = require('./routes/account');
-
-
 
 const app = express();
 
@@ -17,7 +18,9 @@ app.use(express.static('public'))
     .use('/account', accountRoutes)
     .use('/', shopRoutes);
 
-
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
-});
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Listening on port ${PORT}`)
+        });
+    });
