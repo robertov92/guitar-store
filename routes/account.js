@@ -21,6 +21,8 @@ routes.post('/add-product', [
     body('description').isLength({ min: 8, max: 400 }).trim()
 ], accountControllers.postAddProduct);
 
+routes.get('/admin-prods', accountControllers.getAdminProds);
+
 routes.get('/', accountControllers.getAccount);
 
 module.exports = routes;

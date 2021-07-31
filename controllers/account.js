@@ -64,5 +64,46 @@ exports.postAddProduct = (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
+            res.redirect('/project1/500');
+        });
+};
+
+exports.getAdminProds = (req, res, next) => {
+    // Product.find({ userId: req.user._id })
+    Product.find()
+    .then(products => {
+            res.render('pages/admin-prods', {
+                prods: products
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
+
+exports.getEditProduct = (req, res, next) => {
+    const editMode = req.query.edit;
+    if (!editMode) {
+        return res.redirect('/');
+    }
+    const prodId = req.params.productId;
+    Product.findById(prodId)
+        .then(product => {
+            if (!product) {
+                return res.redirect('/');
+            }
+            res.render('pages/project1/add-product', {
+                pageTitle: 'Edit Product',
+                editing: editMode,
+                product: product,
+                hasError: false,
+                errorMessage: null,
+                validationErrors: []
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
         });
 };
