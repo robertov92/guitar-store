@@ -1,7 +1,29 @@
 const routes = require('express').Router();
+const { check, body } = require('express-validator/check');
 
-const adminControllers = require('../controllers/auth');
+const authControllers = require('../controllers/auth');
+const User = require('../models/user');
 
-routes.get('/login', adminControllers.getLogin);
+routes.get('/signup', authControllers.getSignup);
+
+routes.post('/signup', [
+    check('email').isEmail().withMessage('Please enter a valid email').custom((value, { req }) => {
+        return User.findOne({ email: value })
+            .then(userDoc => {
+                if (userDoc) {
+                    return Promise.reject('Email already exists, please pick a different one');
+                }
+            });
+    }),
+    body('password', 'Please enter a password with only numbers and text, and at least 4 characters long').isLength({ min: 4 }).isAlphanumeric(),
+    body('confirmPassword').custom((value, { req }) => {
+        if (value !== req.body.password) {
+            throw new Error('Passwords have to match!')
+        }
+        return true;
+    })
+], authControllers.postSignup);
+
+routes.get('/login', authControllers.getLogin);
 
 module.exports = routes;
