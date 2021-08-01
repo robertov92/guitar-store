@@ -5,7 +5,9 @@ routes.get('/shop', shopControllers.getCatalog);
 
 routes.get('/shop/:productId', shopControllers.getProduct);
 
-routes.get('/checkout', shopControllers.getCart)
+routes.get('/cart', shopControllers.getCart);
+
+routes.post('/cart', shopControllers.postCart);
 
 routes.get('/', shopControllers.getIndex);
 

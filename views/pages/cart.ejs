@@ -1,0 +1,85 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<!-- breadcrums -->
+<div class="container py-4 flex items-center gap-3">
+    <%- include('../includes/breadcrum.ejs') %>
+    <p class="text-gray-600 font-medium">Cart</p>
+</div>
+
+<!--account container-->
+<div class="container grid grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 pt-4 pb-16">
+
+    <!--main container-->
+    <div class="col-span-1 lg:col-span-2 xl:col-span-3">
+        <!--responsive cols container-->
+        <% products.forEach(p => { %>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div class="xl:col-span-3 lg:col-span-2 md:col-span-1 gap-6 p-4 border border-gray-200 rounded flex justify-between">
+                <div class="flex gap-6">
+                    <div class="w-40">
+                        <img src="<%= p.productId.imageUrl%>" alt="<%= p.productId.title %>" class="w-full">
+                    </div>
+                    <div>
+                        <h2 class="text-gray-800 text-xl font-medium uppercase"><%= p.productId.title %></h2>
+                        <p class="text-gray-500 text-sm">Availability: <span class="text-green-600">In Stock(not working yet)</span></p>
+                        <p class="text-gray-500 text-sm">Quantity: <%= p.quantity %></p>
+                        <div class="text-gray-600 cursor-pointer hover:text-primary">
+                            <i class="fas fa-trash"></i><span>(Not working yet)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-primary text-lg font-semibold">$<%= p.productId.price %></div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <!--order summary-->
+    <div class="col-span-1 border border-gray-300 p-4 rounded">
+        <h4 class="text-gray-800 text-lg mb-4 font-medium uppercase">Order Summary</h4>
+        <div class="space-y-2">
+            <div class="flex justify-between">
+                <div>
+                    <h5 class="text-gray-800 font-medium">A product name</h5>
+                    <p class="text-sm text-gray-600">Size: M</p>
+                </div>
+                <p class="text-gray-600">x3</p>
+                <p class="text-gray-800 font-medium">320</p>
+            </div>
+            <div class="flex justify-between">
+                <div>
+                    <h5 class="text-gray-800 font-medium">A product name</h5>
+                    <p class="text-sm text-gray-600">Size: M</p>
+                </div>
+                <p class="text-gray-600">x3</p>
+                <p class="text-gray-800 font-medium">320</p>
+            </div>
+            <div class="flex justify-between">
+                <div>
+                    <h5 class="text-gray-800 font-medium">A product name</h5>
+                    <p class="text-sm text-gray-600">Size: M</p>
+                </div>
+                <p class="text-gray-600">x3</p>
+                <p class="text-gray-800 font-medium">320</p>
+            </div>
+        </div>
+        <div class="flex justify-between border-b border-gray-200 text-gray-800 font-medium my-3 uppercase">
+            <p>Subtotal</p>
+            <p>$320</p>
+        </div>
+        <div class="flex justify-between border-b border-gray-200 text-gray-800 font-medium my-3 uppercase">
+            <p>Shipping</p>
+            <p>Free</p>
+        </div>
+        <div class="flex justify-between text-gray-800 font-medium my-3 uppercase">
+            <p class="font-semibold">Total</p>
+            <p>$320</p>
+        </div>
+        <a href="#" class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Place Order</a>
+    </div>
+</div>
+
+
+<%- include('../includes/end.ejs') %>

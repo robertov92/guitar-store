@@ -29,6 +29,36 @@ exports.getProduct = (req, res, next) => {
         });
 }
 
+// gets cart page
 exports.getCart = (req, res, next) => {
-    res.render('pages/checkout', {});
-}
+    req.user
+        .populate('cart.items.productId')
+        .execPopulate()
+        .then(user => {
+            const products = user.cart.items;
+            res.render('pages/cart', {
+                //pageTitle: 'Your Cart',
+                products: products
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
+
+// adds product to cart
+exports.postCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId)
+        .then(product => {
+            return req.user.addToCart(product);
+        })
+        .then(() => {
+            res.redirect('/cart');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
