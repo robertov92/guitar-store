@@ -3,8 +3,6 @@ const { check, body } = require('express-validator/check');
 
 const accountControllers = require('../controllers/account');
 
-routes.get('/login', accountControllers.getLogin);
-
 routes.get('/info', accountControllers.getAccInfo);
 
 routes.get('/wishlist', accountControllers.getWishList);
