@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<!-- breadcrums -->
+<div class="container py-4 flex items-center gap-3">
+    <%- include('../includes/breadcrum.ejs') %>
+    <p class="text-gray-600 font-medium">Account</p>
+ </div>
+ 
+ <!--account container-->
+ <div class="container grid grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 pt-4 pb-16">
+ 
+    <!--account side link-->
+    <%- include('../includes/account-side-links.ejs') %>
+ 
+    <!--main container-->
+    <div class="col-span-1 lg:col-span-2 xl:col-span-3 space-y-4">
+        <% if (orders.length > 0) { %>
+        <% orders.forEach(order => { %>
+            <div class="xl:p-6 lg:gap-4 gap-2 p-4 border border-gray-200 rounded shadow text-gray-600">
+                <h2 class="text-xl font-medium uppercase">Order ID: <%= order._id %></h2>
+                <p class="mb-3">Date: <%= order.createdAt.toString().substring(0,24) %></p>
+                <div class="w-full mb-3">
+                    <div class="flex bg-primary text-white rounded">
+                        <p class="w-1/2 text-center border-b border-gray-200">Product</p>
+                        <p class="w-1/2 text-center border-b border-gray-200">Quantity</p>
+                    </div>
+                    <% order.products.forEach(p => { %>
+                    <div class="flex">
+                        <p class="w-1/2 text-center border-b border-gray-200"><%= p.product.title %></p>
+                        <p class="w-1/2 text-center border-b border-gray-200"><%= p.quantity %></p>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% }) %>
+        <% } else { %>
+        <h1 class="text-gray-800 text-xl font-medium uppercase">You do not have any orders</h1>
+        <% } %>
+    </div>
+</div>
+
+<%- include('../includes/end.ejs') %>

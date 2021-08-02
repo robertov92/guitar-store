@@ -18,7 +18,7 @@
     <div class="col-span-1 lg:col-span-2 xl:col-span-3 space-y-4">
         <% if (products.length > 0) { %>
         <% products.forEach(p => { %>
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between xl:p-6 lg:gap-4 gap-2 p-4 border border-gray-200 rounded">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between xl:p-6 lg:gap-4 gap-2 p-4 border border-gray-200 rounded shadow">
                 <div class="w-full lg:w-28">
                     <img src="<%= p.productId.imageUrl%>" alt="<%= p.productId.title %>" class="w-full">
                 </div>

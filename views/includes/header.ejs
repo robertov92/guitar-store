@@ -35,6 +35,48 @@
                 <span class="absolute -right-3 top-1 w-5 rounded-full flex items-center justify-center bg-primary text-white text-xs"><%= cartItems %></span>
                 <% } %> 
             </a>
+            <% } else { %>
+            <style>
+                /* Tooltip container */
+                .tooltip {
+                    position: relative;
+                    display: inline-block;
+                }
+                
+                /* Tooltip text */
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: rgba(0, 0, 0, .8);
+                    color: #fff;
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 6px;
+                    
+                    /* Position the tooltip text - see examples below! */
+                    position: absolute;
+                    z-index: 1;
+                }
+                
+                /* Show the tooltip text when you mouse over the tooltip container */
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                }
+            </style>
+            <div class="tooltip text-center text-gray-500">
+                <span class="tooltiptext">Login to add items to your wishlist</span>
+                <div class="text-2xl">
+                    <i class='fas fa-heart'></i>
+                </div>
+                <div class="text-xs leading-3">Wish List</div>
+            </div>
+            <div class="tooltip text-center text-gray-500">
+                <span class="tooltiptext">Login to add items to your cart</span>
+                <div class="text-2xl">
+                    <i class='fas fa-shopping-cart'></i>
+                </div>
+                <div class="text-xs leading-3">Cart</div>
+            </div>
             <% } %> 
             <a href="<% if (isAuthenticated) { %>/account<% } else { %>/login<% } %>" class="text-center text-gray-700 hover:text-primary transition relative">
                 <div class="text-2xl">

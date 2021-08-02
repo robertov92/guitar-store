@@ -19,6 +19,10 @@ routes.post('/wishlist', shopControllers.postWishlist);
 
 routes.post('/wishlist-delete-item', shopControllers.postWishlistDeleteProduct);
 
+routes.post('/create-order', shopControllers.postOrder);
+
+routes.get('/orders', shopControllers.getOrders);
+
 routes.get('/', shopControllers.getIndex);
 
 module.exports = routes;
