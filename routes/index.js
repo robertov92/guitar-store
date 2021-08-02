@@ -9,6 +9,10 @@ routes.get('/cart', shopControllers.getCart);
 
 routes.post('/cart', shopControllers.postCart);
 
+routes.get('/wishlist', shopControllers.getWishlist);
+
+routes.post('/wishlist', shopControllers.postWishlist);
+
 routes.get('/', shopControllers.getIndex);
 
 module.exports = routes;

@@ -5,8 +5,6 @@ const accountControllers = require('../controllers/account');
 
 routes.get('/info', accountControllers.getAccInfo);
 
-routes.get('/wishlist', accountControllers.getWishList);
-
 routes.get('/add-product', accountControllers.getAddProduct);
 
 routes.post('/add-product', [

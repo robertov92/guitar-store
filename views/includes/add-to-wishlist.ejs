@@ -1,6 +1,6 @@
 <% //if (isAuthenticated) { %>
-    <form action="/cart" method="post">
-        <button class="w-full py-1" type="submit">Add to Cart</button>
+    <form action="/wishlist" method="post">
+        <button class="p-1" type="submit"><i class="fa fa-heart"></i></button>
         <input type="hidden" name="productId" value="<%= product._id %>">
     </form>
 <% //} else { %>

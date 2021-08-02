@@ -5,9 +5,9 @@
             <a href="/shop/<%= product._id %>" class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
                 <i class="fa fa-search"></i>
             </a>
-            <a href="#" class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
-                <i class="fa fa-heart"></i>
-            </a>
+            <div class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                <%- include('../includes/add-to-wishlist.ejs', {product: product}) %>
+            </div>
         </div>
     </div>
     <div class="pt-4 pb-3 px-4">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <% if (product.stock > 0) { %>
-    <div class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+    <div class="w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
         <%- include('../includes/add-to-cart.ejs', {product: product}) %>
     </div>
     <% } else { %>

@@ -62,3 +62,40 @@ exports.postCart = (req, res, next) => {
             res.redirect('/project1/500');
         });
 };
+
+
+
+
+// gets wishlist page
+exports.getWishlist = (req, res, next) => {
+    req.user
+        .populate('wishlist.items.productId')
+        .execPopulate()
+        .then(user => {
+            const products = user.wishlist.items;
+            res.render('pages/wishlist', {
+                //pageTitle: 'Your Wishlist',
+                products: products
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
+
+// adds product to wishlist
+exports.postWishlist = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId)
+        .then(product => {
+            return req.user.addToWishlist(product);
+        })
+        .then(() => {
+            res.redirect('/wishlist');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};

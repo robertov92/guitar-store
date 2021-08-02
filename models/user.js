@@ -11,8 +11,8 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    resetToken: String,
-    resetTokenExpitaion: Date,
+    //resetToken: String,
+    //resetTokenExpitaion: Date,
     cart: {
         items: [{
             productId: {
@@ -22,9 +22,19 @@ const userSchema = new Schema({
             },
             quantity: { type: Number, required: true }
         }]
+    },
+    wishlist: {
+        items: [{
+            productId: {
+                type: Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            }
+        }]
     }
 });
 
+// cart
 userSchema.methods.addToCart = function(product) {
     const cartProductIndex = this.cart.items.findIndex(cp => {
         return cp.productId.toString() === product._id.toString();
@@ -58,6 +68,36 @@ userSchema.methods.removeFromCart = function(productId) {
 
 userSchema.methods.clearCart = function() {
     this.cart = { items: [] };
+    return this.save();
+};
+
+// wishlist
+userSchema.methods.addToWishlist = function(product) {
+    const wishlistProductIndex = this.wishlist.items.findIndex(cp => {
+        return cp.productId.toString() === product._id.toString();
+    });
+
+    const updatedWishlistItems = [...this.wishlist.items];
+
+    if (wishlistProductIndex < 0) {
+        updatedWishlistItems.push({
+            productId: product._id
+        });
+    }
+
+    const updatedWishlist = {
+        items: updatedWishlistItems
+    };
+
+    this.wishlist = updatedWishlist;
+    return this.save();
+};
+
+userSchema.methods.removeFromWishlist = function(productId) {
+    const updatedWishlistItems = this.wishlist.items.filter(item => {
+        return item.productId.toString() !== productId.toString();
+    });
+    this.wishlist.items = updatedWishlistItems;
     return this.save();
 };
 

@@ -33,7 +33,10 @@ app.use((req, res, next) => {
                 return next();
             }
             req.user = user;
-            res.locals.cartItems = user.cart.items.length;
+            // gets the total number of items in cart
+            res.locals.cartItems = user.cart.items.reduce((total, num) => total + num.quantity, 0);
+            // gets the wishlist length
+            res.locals.wishlistItems = user.wishlist.items.length;
             next();
         })
         .catch(err => {
@@ -50,7 +53,7 @@ app.use(express.static('public'))
     .use(authRoutes)
     .use(shopRoutes);
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         app.listen(process.env.PORT, () => {
             console.log(`Listening on port ${process.env.PORT}`)

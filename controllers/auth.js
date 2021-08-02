@@ -90,7 +90,7 @@ exports.postLogin = (req, res, next) => {
                         // saves the user into the session
                         return req.session.save(err => {
                             console.log(err);
-                            res.redirect('/');
+                            res.redirect('/account');
                         });
                     }
                     return res.status(422).render('pages/login', {

@@ -10,10 +10,6 @@ exports.getAccInfo = (req, res, next) => {
     res.render('pages/profile-info', {});
 }
 
-exports.getWishList = (req, res, next) => {
-    res.render('pages/wishlist', {});
-}
-
 // gets 'Add Product' page
 exports.getAddProduct = (req, res, next) => {
     res.render('pages/add-product', {
