@@ -55,6 +55,7 @@ exports.postCart = (req, res, next) => {
             return req.user.addToCart(product);
         })
         .then(() => {
+            req.user.removeFromWishlist(prodId);
             res.redirect('/cart');
         })
         .catch(err => {
@@ -63,8 +64,35 @@ exports.postCart = (req, res, next) => {
         });
 };
 
+// reduces product from cart
+exports.reduceCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId)
+        .then(product => {
+            return req.user.reduceFromCart(product);
+        })
+        .then(() => {
+            res.redirect('/cart');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
 
-
+// deletes product from cart
+exports.postCartDeleteProduct = (req, res, next) => {
+    const prodId = req.body.productId;
+    req.user
+        .removeFromCart(prodId)
+        .then(() => {
+            res.redirect('/cart');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
 
 // gets wishlist page
 exports.getWishlist = (req, res, next) => {
@@ -91,6 +119,20 @@ exports.postWishlist = (req, res, next) => {
         .then(product => {
             return req.user.addToWishlist(product);
         })
+        .then(() => {
+            res.redirect('/wishlist');
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/project1/500');
+        });
+};
+
+// deletes product from wishlist
+exports.postWishlistDeleteProduct = (req, res, next) => {
+    const prodId = req.body.productId;
+    req.user
+        .removeFromWishlist(prodId)
         .then(() => {
             res.redirect('/wishlist');
         })

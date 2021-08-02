@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="pt-4 pb-3 px-4">
-        <a href="#">
+        <a href="/shop/<%= product._id %>">
             <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"><%= product.title %></h4>
         </a>
         <div class="flex items-baseline mb-1 space-x-2 font-roboto">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <% if (product.stock > 0) { %>
-    <div class="w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+    <div class="w-full text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
         <%- include('../includes/add-to-cart.ejs', {product: product}) %>
     </div>
     <% } else { %>

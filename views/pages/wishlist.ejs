@@ -16,35 +16,35 @@
  
     <!--main container-->
     <div class="col-span-1 lg:col-span-2 xl:col-span-3 space-y-4">
-    
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 p-4 border border-gray-200 rounded">
-            <div class="w-28 flex-shrink-0">
-                <img src="/images/guitars.jpg" alt="Product" class="w-full">
+        <% if (products.length > 0) { %>
+        <% products.forEach(p => { %>
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between xl:p-6 lg:gap-4 gap-2 p-4 border border-gray-200 rounded">
+                <div class="w-full lg:w-28">
+                    <img src="<%= p.productId.imageUrl%>" alt="<%= p.productId.title %>" class="w-full">
+                </div>
+                <div class="lg:w-1/3">
+                    <h2 class="text-gray-800 text-xl font-medium uppercase"><%= p.productId.title %></h2>
+                    <p class="text-gray-500 text-sm">Availability: <% if (p.productId.stock > 0) { %> <span class="text-green-600">In Stock</span><% } else { %><span class="text-red-600">Out of Stock</span><% } %></p>
+                </div>
+                <div class="text-primary text-lg font-semibold">$<%= p.productId.price %></div>
+                <% if (p.productId.stock > 0) { %>
+                <div class="lg:w-32 w-full py-1 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-roboto">
+                    <%- include('../includes/add-to-cart.ejs', {product: p.productId}) %>
+                </div>
+                <% } else { %>
+                <p class="cursor-not-allowed lg:w-32 w-full py-2 text-center text-sm text-white bg-gray-400 border border-gray-400 rounded font-roboto">Add to Cart</p>
+                <% } %>
+                <div class="text-gray-600 text-center cursor-pointer hover:text-primary">
+                    <form action="/wishlist-delete-item" method="POST">
+                        <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                        <button class="btn" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
             </div>
-            <div class="lg:w-1/3">
-                <h2 class="text-gray-800 text-xl font-medium uppercase">A product</h2>
-                <p class="text-gray-500 text-sm">Availability: <span class="text-green-600">In Stock</span></p>
-            </div>
-            <div class="text-primary text-lg font-semibold">$320.00</div>
-            <a href="#" class="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-roboto">Add to Cart</a>
-            <div class="text-gray-600 cursor-pointer hover:text-primary">
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 p-4 border border-gray-200 rounded">
-            <div class="w-28 flex-shrink-0">
-                <img src="/images/guitars.jpg" alt="Product" class="w-full">
-            </div>
-            <div class="lg:w-1/3">
-                <h2 class="text-gray-800 text-xl font-medium uppercase">A product</h2>
-                <p class="text-gray-500 text-sm">Availability: <span class="text-red-600">Out of Stock</span></p>
-            </div>
-            <div class="text-primary text-lg font-semibold">$320.00</div>
-            <a href="#" class="cursor-not-allowed px-6 py-2 text-center text-sm text-white bg-gray-400 border border-gray-400 rounded font-roboto">Add to Cart</a>
-            <div class="text-gray-600 cursor-pointer hover:text-primary">
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
+        <% }) %>
+        <% } else { %>
+        <h1 class="text-gray-800 text-xl font-medium uppercase">No Products in Your Wishlist!</h1>
+        <% } %>
     </div>
 </div>
 
