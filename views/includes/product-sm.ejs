@@ -5,9 +5,11 @@
             <a href="/shop/<%= product._id %>" class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
                 <i class="fa fa-search"></i>
             </a>
+            <% if (isAuthenticated) { %> 
             <div class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
                 <%- include('../includes/add-to-wishlist.ejs', {product: product}) %>
             </div>
+            <% } %> 
         </div>
     </div>
     <div class="pt-4 pb-3 px-4">
@@ -29,11 +31,15 @@
             <div class="text-xs text-gray-500 ml-3">(150)</div>
         </div>
     </div>
-    <% if (product.stock > 0) { %>
-    <div class="w-full text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
-        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-    </div>
+    <% if (isAuthenticated) { %> 
+        <% if (product.stock > 0) { %>
+        <div class="w-full text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+        </div>
+        <% } else { %>
+        <p class="cursor-not-allowed block w-full py-1 text-center text-white bg-gray-400 rounded-b border border-gray-400">Out of stock</p>
+        <% } %> 
     <% } else { %>
-    <p class="cursor-not-allowed block w-full py-1 text-center text-white bg-gray-400 rounded-b border border-gray-400">Out of Stock</p>
+    <p class="cursor-not-allowed block w-full py-1 text-center text-white bg-gray-400 rounded-b border border-gray-400">Login to buy</p>
     <% } %> 
 </div>

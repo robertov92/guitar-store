@@ -1,8 +1,4 @@
-<% //if (isAuthenticated) { %>
-    <form action="/wishlist" method="post">
-        <button class="p-1" type="submit"><i class="fa fa-heart"></i></button>
-        <input type="hidden" name="productId" value="<%= product._id %>">
-    </form>
-<% //} else { %>
-    <!-- <p>Create an account and/or sign-in to buy</p> -->
-<%// } %>
+<form action="/wishlist" method="post">
+    <button class="p-1" type="submit"><i class="fa fa-heart"></i></button>
+    <input type="hidden" name="productId" value="<%= product._id %>">
+</form>
