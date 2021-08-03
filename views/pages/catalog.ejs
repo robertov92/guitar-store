@@ -21,80 +21,108 @@
         <p class="font-poppins ml-3 text-xl text-gray-700">Filters</p>
     </div>
     <!--filters-->
-    <div id="filters" class="mb-6 col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden hidden md:block">
-        <div class="divide-y divide-gray-200 space-y-5">
-            <!--category filter-->
-            <div class="pt-4">
-                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">categories</h3>
-                <div class="space-y-2">
-                    <div class="flex items-center">
-                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">category 1</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="cat-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="cat-2" class="text-gray-600 ml-3 cursor-pointer">category 2</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="cat-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="cat-3" class="text-gray-600 ml-3 cursor-pointer">category 3</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="cat-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="cat-4" class="text-gray-600 ml-3 cursor-pointer">category 4</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                </div>
-            </div>
-            <!--brands filter-->
-            <div class="pt-4">
-                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">brands</h3>
-                <div class="space-y-2">
-                    <div class="flex items-center">
-                        <input type="checkbox" id="brand-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="brand-1" class="text-gray-600 ml-3 cursor-pointer">brand 1</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="brand-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="brand-2" class="text-gray-600 ml-3 cursor-pointer">brand 2</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="brand-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="brand-3" class="text-gray-600 ml-3 cursor-pointer">brand 3</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="brand-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                        <label for="brand-4" class="text-gray-600 ml-3 cursor-pointer">brand 4</label>
-                        <div class="ml-auto text-gray-600 text-sm">(15)</div>
+    <!--brands filter-->
+    <form action="/shop-filter" method="GET">
+        <div id="filters" class="mb-6 col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden hidden md:block">
+            <div class="divide-y divide-gray-200 space-y-5">
+                <div class="pt-4">
+                    <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">brands</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Gibson')) {%> checked <% } %> name="brand" value="Gibson" type="checkbox" id="brand-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-1" class="text-gray-600 ml-3 cursor-pointer">Gibson</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Fender')) {%> checked <% } %> name="brand" value="Fender" type="checkbox" id="brand-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-2" class="text-gray-600 ml-3 cursor-pointer">Fender</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Ibanez')) {%> checked <% } %> name="brand" value="Ibanez" type="checkbox" id="brand-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-3" class="text-gray-600 ml-3 cursor-pointer">Ibanez</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Epiphone')) {%> checked <% } %> name="brand" value="Epiphone" type="checkbox" id="brand-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-4" class="text-gray-600 ml-3 cursor-pointer">Epiphone</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Squire')) {%> checked <% } %> name="brand" value="Squire" type="checkbox" id="brand-5" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-5" class="text-gray-600 ml-3 cursor-pointer">Squire</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Yamaha')) {%> checked <% } %> name="brand" value="Yamaha" type="checkbox" id="brand-6" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-6" class="text-gray-600 ml-3 cursor-pointer">Yamaha</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredBrands.includes('Other')) {%> checked <% } %> name="brand" value="Other" type="checkbox" id="brand-7" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="brand-7" class="text-gray-600 ml-3 cursor-pointer">Other</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--price filter-->
-            <div class="pt-4">
-                <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">price</h3>
-                <div class="mt-4 flex items-center">
-                    <input id="min-price" type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="min">
-                    <span class="mx-3 text-gray-500">-</span>
-                    <input id="max-price" type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="max">
+                <!--category filter-->
+                <div class="pt-4">
+                    <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">categories</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Electric')) {%> checked <% } %> name="category" value="Electric" type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Electric</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Acoustic')) {%> checked <% } %> name="category" value="Acoustic" type="checkbox" id="cat-2" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-2" class="text-gray-600 ml-3 cursor-pointer">Acoustic</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Electroacoustic')) {%> checked <% } %> name="category" value="Electroacoustic" type="checkbox" id="cat-3" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-3" class="text-gray-600 ml-3 cursor-pointer">Electroacoustic</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Bass')) {%> checked <% } %> name="category" value="Bass" type="checkbox" id="cat-4" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-4" class="text-gray-600 ml-3 cursor-pointer">Bass</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Accessory')) {%> checked <% } %> name="category" value="Accessory" type="checkbox" id="cat-5" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-5" class="text-gray-600 ml-3 cursor-pointer">Accessory</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                        <div class="flex items-center">
+                            <input <% if(filteredCategories.includes('Other')) {%> checked <% } %> name="category" value="Other" type="checkbox" id="cat-6" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                            <label for="cat-6" class="text-gray-600 ml-3 cursor-pointer">Other</label>
+                            <div class="ml-auto text-gray-600 text-sm">(15)</div>
+                        </div>
+                    </div>
                 </div>
-
+                <!--price filter-->
+                <div class="pt-4">
+                    <h3 class="text-xl text-gray-800 mb-3 uppercase font-medium">price</h3>
+                    <div class="mt-4 flex items-center">
+                        <input <% if(min) { %> value="<%= min %>"  <% } %> name="min" id="min-price" type="number" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="min">
+                        <span class="mx-3 text-gray-500">-</span>
+                        <input <% if(max) { %> value="<%= max %>"  <% } %> name="max" id="max-price" type="number" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="max">
+                    </div>
+                    
+                </div>
+                <input type="submit" value="Apply ALL filters">
             </div>
         </div>
-    </div>
-
+    </form>
+        
     <!--products-->
     <div class="col-span-1 lg:col-span-2 xl:col-span-3">
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            <% for (let product of prods) { %> 
-                <%- include('../includes/product-sm.ejs', {product}) %>
-            <% } %> 
-        </div>
+        <% for (let product of prods) { %> 
+            <%- include('../includes/product-sm.ejs', {product}) %>
+        <% } %>
+    </div>
 
     </div>
 </div>
@@ -106,6 +134,7 @@
     btn2.addEventListener("click", () => {
         filters.classList.toggle("hidden");
     });
+    fetch('http')
 </script>
 
 <%- include('../includes/end.ejs') %>

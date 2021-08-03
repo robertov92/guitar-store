@@ -23,6 +23,8 @@ routes.post('/create-order', shopControllers.postOrder);
 
 routes.get('/orders', shopControllers.getOrders);
 
+routes.get('/shop-filter', shopControllers.getFilteredCatalog);
+
 routes.get('/', shopControllers.getIndex);
 
 module.exports = routes;

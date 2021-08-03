@@ -9,7 +9,29 @@ exports.getCatalog = (req, res, next) => {
     Product.find()
         .then(products => {
             res.render('pages/catalog', {
-                prods: products
+                prods: products,
+                filteredBrands: [],
+                filteredCategories: [],
+                min:null,
+                max:null
+            });
+        });
+}
+
+exports.getFilteredCatalog = (req, res, next) => {
+    const filteredBrands = req.query.brand || ['Gibson', 'Fender', 'Ibanez', 'Epiphone', 'Squire', 'Yamaha', 'Other'];
+    const filteredCategories = req.query.category || ['Electric', 'Acoustic', 'Electroacoustic', 'Bass', 'Accessory', 'Other'];
+    const min = req.query.min || 0;
+    const max = req.query.max || 9999999;
+    console.log(min + ' ' + max)
+    Product.find({category:filteredCategories, brand:filteredBrands, price: {$gte:min, $lte:max}})
+        .then(products => {
+            res.render('pages/catalog', {
+                prods: products,
+                filteredBrands,
+                filteredCategories,
+                min,
+                max
             });
         });
 }

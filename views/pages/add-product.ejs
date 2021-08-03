@@ -35,16 +35,30 @@
                <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'stock') ? 'border-red-500' : '' %>"  
                type="text" name="stock" 
                value="<% if (editing || hasError) { %><%= product.stock %><% } %>">
+            </label><br><label for="brand-input" class="text-gray-600 mb-2">Brand<br>
+               <select id="brand-input" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'brand') ? 'border-red-500' : '' %>"  
+               name="brand">
+                  <option value="">Select one...</option>
+                  <option value="Gibson" <% if ((editing || hasError) && product.brand === 'Gibson') { %>selected<% } %>>Gibson</option>
+                  <option value="Fender" <% if ((editing || hasError) && product.brand === 'Fender') { %>selected<% } %>>Fender</option>
+                  <option value="Ibanez" <% if ((editing || hasError) && product.brand === 'Ibanez') { %>selected<% } %>>Ibanez</option>
+                  <option value="Epiphone" <% if ((editing || hasError) && product.brand === 'Epiphone') { %>selected<% } %>>Epiphone</option>
+                  <option value="Squire" <% if ((editing || hasError) && product.brand === 'Squire') { %>selected<% } %>>Squire</option>
+                  <option value="Yamaha" <% if ((editing || hasError) && product.brand === 'Yamaha') { %>selected<% } %>>Yamaha</option>
+                  <option value="Other" <% if ((editing || hasError) && product.brand === 'Other') { %>selected<% } %>>Other</option>
+               </select>
             </label><br>
-            <label class="text-gray-600 mb-2">Brand<br>
-               <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'brand') ? 'border-red-500' : '' %>"  
-               type="text" name="brand" 
-               value="<% if (editing || hasError) { %><%= product.brand %><% } %>">
-            </label><br>
-            <label class="text-gray-600 mb-2">Category<br>
-               <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'category') ? 'border-red-500' : '' %>"  
-               type="text" name="category" 
-               value="<% if (editing || hasError) { %><%= product.category %><% } %>">
+            <label for="category-input" class="text-gray-600 mb-2">Category<br>
+               <select id="category-input" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'brand') ? 'border-red-500' : '' %>"  
+               name="category">
+                  <option value="">Select one...</option>
+                  <option value="Electric" <% if ((editing || hasError) && product.brand === 'Electric') { %>selected<% } %>>Electric</option>
+                  <option value="Acoustic" <% if ((editing || hasError) && product.brand === 'Acoustic') { %>selected<% } %>>Acoustic</option>
+                  <option value="Electroacoustic" <% if ((editing || hasError) && product.brand === 'Electroacoustic') { %>selected<% } %>>Electroacoustic</option>
+                  <option value="Bass" <% if ((editing || hasError) && product.brand === 'Bass') { %>selected<% } %>>Bass</option>
+                  <option value="Accessory" <% if ((editing || hasError) && product.brand === 'Accessory') { %>selected<% } %>>Accessory</option>
+                  <option value="Other" <% if ((editing || hasError) && product.brand === 'Other') { %>selected<% } %>>Other</option>
+               </select>
             </label><br>
             <label class="text-gray-600 mb-2">Price<br>
                <input class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'price') ? 'border-red-500' : '' %>"  

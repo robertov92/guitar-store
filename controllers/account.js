@@ -75,12 +75,12 @@ exports.postAddProduct = (req, res, next) => {
         price: price,
         description: description,
         imageUrl: imageUrl,
-        //userId: req.user
+        userId: req.user
     });
 
     product.save()
         .then(() => {
-            res.redirect('/account');
+            res.redirect('/account/admin-prods');
         })
         .catch(err => {
             console.log(err);
@@ -111,10 +111,10 @@ exports.postEditProduct = (req, res, next) => {
     }
     Product.findById(prodId)
     .then(product => {
-            // ***user validation***
-            // if (product.userId.toString() !== req.user._id.toString()) {
-            //     return res.redirect('/account/');
-            // }
+            // user validation
+            if (product.userId.toString() !== req.user._id.toString()) {
+                return res.redirect('/account/');
+            }
             product.title = updatedTitle;
             product.stock = updatedStock;
             product.brand = updatedBrand;
@@ -136,8 +136,7 @@ exports.postEditProduct = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.productId;
     //User security
-    //Product.deleteOne({ _id: prodId, userId: req.user._id })
-    Product.deleteOne({ _id: prodId })
+    Product.deleteOne({ _id: prodId, userId: req.user._id })
         .then(() => {
             res.redirect('/account/admin-prods');
         })
@@ -149,8 +148,7 @@ exports.postDeleteProduct = (req, res, next) => {
 
 // gets Admin-Prods page
 exports.getAdminProds = (req, res, next) => {
-    // Product.find({ userId: req.user._id })
-    Product.find()
+    Product.find({ userId: req.user._id })
     .then(products => {
             res.render('pages/admin-prods', {
                 prods: products
