@@ -6,12 +6,12 @@
 <div class="bg-cover bg-no-repeat bg-center py-36 mb-40" style="background-image: url(/images/guitars.jpg);">
     <div class="container">
         <h1 class="text-6xl text-white font-medium mb-4 capitalize">
-            best collection for <br> home decoration
+            Easy buy and sell guitars<br>  and accessories
         </h1>
-        <p class="text-white">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni molestiae dignissimos <br>
-             mollitia exercitationem obcaecati, aliquid repellendus est sapiente quis? Corrupti!</p>
+        <p class="text-white">Anyone can see all products!<br>
+             Login to start buying or selling your gear!</p>
         <div class="mt-12">
-            <a href="#" class="bg-primary border border-primary text-white px-8 py-3 font-medium rounded-md hover:bg-transparent hover:text-primary">Shop</a>
+            <a href="/shop" class="bg-primary border border-primary text-white px-8 py-3 font-medium rounded-md hover:bg-transparent transition">See catalog!</a>
         </div>
     </div>
 </div>
@@ -23,21 +23,21 @@
             <img src="/images/icon.png" alt="Icon" class="w-12 h-12 object-contain">
             <div>
                 <h4 class="font-medium capitalize text-lg">Free Shipping</h4>
-                <p class="text-gray-500 text-sm">order over $200</p>
+                <p class="text-gray-500 text-sm">in orders over $200</p>
             </div>
         </div>
         <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
             <img src="/images/icon.png" alt="Icon" class="w-12 h-12 object-contain">
             <div>
                 <h4 class="font-medium capitalize text-lg">Money Returns</h4>
-                <p class="text-gray-500 text-sm">30 days money return</p>
+                <p class="text-gray-500 text-sm">30 days after received</p>
             </div>
         </div>
         <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
             <img src="/images/icon.png" alt="Icon" class="w-12 h-12 object-contain">
             <div>
                 <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
-                <p class="text-gray-500 text-sm">Customer Support</p>
+                <p class="text-gray-500 text-sm">we are happy to help!</p>
             </div>
         </div>
     </div>
@@ -48,25 +48,39 @@
     <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">Shop by category</h2>
     <div class="grid md:grid-cols-3 grid-cols-1 gap-3">
         <div class="relative rounded-sm overflow-hidden group">
-            <img src="/images/guitars.jpg" class="w-full" alt="Category">
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Category</a>
+            <img src="/images/electric.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Electric" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Electric</a>
         </div>
         <div class="relative rounded-sm overflow-hidden group">
-            <img src="/images/guitars.jpg" class="w-full" alt="Category">
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Category</a>
+            <img src="/images/acoustic.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Acoustic" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Acoustic</a>
         </div>
         <div class="relative rounded-sm overflow-hidden group">
-            <img src="/images/guitars.jpg" class="w-full" alt="Category">
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Category</a>
+            <img src="/images/electroacoustic.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Electroacoustic" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Electroacoustic</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="/images/bass.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Bass" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Bass</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="/images/accesory.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Accessory" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Accessories</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="/images/other.jpg" class="w-full" alt="Category">
+            <a href="/shop-filter?category=Other" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Other</a>
         </div>
     </div>
 </div>
 
 <!-- products -->
 <div class="container mb-40">
-    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">top new arrivals</h2>
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">new products</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <%- //include('../includes/product-sm.ejs') %>
+        <% for (let product of prods) { %> 
+            <%- include('../includes/product-sm.ejs', {product}) %>
+        <% } %>
     </div>
 </div>
 

@@ -92,12 +92,11 @@
 
 <!-- products -->
 <div class="container py-16">
-    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">related products</h2>
+    <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">you may also like</h2>
     <div class="grid grid-cols-4 gap-6">
-        <%- include('../includes/product-sm.ejs') %> 
-        <%- include('../includes/product-sm.ejs') %> 
-        <%- include('../includes/product-sm.ejs') %> 
-        <%- include('../includes/product-sm.ejs') %> 
+        <% for (let product of products) { %> 
+            <%- include('../includes/product-sm.ejs', {product}) %>
+        <% } %>
     </div>
 </div>
 

@@ -49,15 +49,15 @@
                </select>
             </label><br>
             <label for="category-input" class="text-gray-600 mb-2">Category<br>
-               <select id="category-input" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'brand') ? 'border-red-500' : '' %>"  
+               <select id="category-input" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400 <%= validationErrors.find(e=>e.param === 'category') ? 'border-red-500' : '' %>"  
                name="category">
                   <option value="">Select one...</option>
-                  <option value="Electric" <% if ((editing || hasError) && product.brand === 'Electric') { %>selected<% } %>>Electric</option>
-                  <option value="Acoustic" <% if ((editing || hasError) && product.brand === 'Acoustic') { %>selected<% } %>>Acoustic</option>
-                  <option value="Electroacoustic" <% if ((editing || hasError) && product.brand === 'Electroacoustic') { %>selected<% } %>>Electroacoustic</option>
-                  <option value="Bass" <% if ((editing || hasError) && product.brand === 'Bass') { %>selected<% } %>>Bass</option>
-                  <option value="Accessory" <% if ((editing || hasError) && product.brand === 'Accessory') { %>selected<% } %>>Accessory</option>
-                  <option value="Other" <% if ((editing || hasError) && product.brand === 'Other') { %>selected<% } %>>Other</option>
+                  <option value="Electric" <% if ((editing || hasError) && product.category === 'Electric') { %>selected<% } %>>Electric</option>
+                  <option value="Acoustic" <% if ((editing || hasError) && product.category === 'Acoustic') { %>selected<% } %>>Acoustic</option>
+                  <option value="Electroacoustic" <% if ((editing || hasError) && product.category === 'Electroacoustic') { %>selected<% } %>>Electroacoustic</option>
+                  <option value="Bass" <% if ((editing || hasError) && product.category === 'Bass') { %>selected<% } %>>Bass</option>
+                  <option value="Accessory" <% if ((editing || hasError) && product.category === 'Accessory') { %>selected<% } %>>Accessory</option>
+                  <option value="Other" <% if ((editing || hasError) && product.category === 'Other') { %>selected<% } %>>Other</option>
                </select>
             </label><br>
             <label class="text-gray-600 mb-2">Price<br>

@@ -2,13 +2,20 @@ const Product = require('../models/product');
 const Order = require('../models/order');
 
 exports.getIndex = (req, res, next) => {
-    res.render('pages/home', {});
+    Product.find().limit(4)
+        .then(products => {
+            res.render('pages/home', {
+                pageTitle: 'Home',
+                prods: products
+            });
+        })
 }
 
 exports.getCatalog = (req, res, next) => {
     Product.find()
         .then(products => {
             res.render('pages/catalog', {
+                pageTitle: 'Shop',
                 prods: products,
                 filteredBrands: [],
                 filteredCategories: [],
@@ -23,6 +30,7 @@ exports.getSearchedCatalog = (req, res, next) => {
     Product.find({ $or: [{ title: { $regex: search, $options: "i" } }, { brand: { $regex: search, $options: "i" } }, { category: { $regex: search, $options: "i" } }, { description: { $regex: search, $options: "i" } }] })
         .then(products => {
             res.render('pages/catalog', {
+                pageTitle: 'Shop',
                 prods: products,
                 filteredBrands: [],
                 filteredCategories: [],
@@ -40,6 +48,7 @@ exports.getFilteredCatalog = (req, res, next) => {
     Product.find({ category: filteredCategories, brand: filteredBrands, price: { $gte: min, $lte: max } })
         .then(products => {
             res.render('pages/catalog', {
+                pageTitle: 'Shop',
                 prods: products,
                 filteredBrands,
                 filteredCategories,
@@ -53,9 +62,15 @@ exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
     Product.findById(prodId)
         .then(product => {
-            res.render('pages/product-details', {
-                product: product
-            });
+            //skip the same file, use .skip()
+            Product.find({ _id: { $ne: product._id } }).limit(4)
+                .then(products => {
+                    res.render('pages/product-details', {
+                        pageTitle: 'Product Details',
+                        product,
+                        products
+                    })
+                });
         })
         .catch(err => {
             console.log(err);
@@ -73,7 +88,7 @@ exports.getCart = (req, res, next) => {
         .then(user => {
             const products = user.cart.items;
             res.render('pages/cart', {
-                //pageTitle: 'Your Cart',
+                pageTitle: 'Your Cart',
                 products: products
             });
         })
@@ -138,7 +153,7 @@ exports.getWishlist = (req, res, next) => {
         .then(user => {
             const products = user.wishlist.items;
             res.render('pages/wishlist', {
-                //pageTitle: 'Your Wishlist',
+                pageTitle: 'Your Wishlist',
                 products: products
             });
         })
@@ -183,7 +198,7 @@ exports.getOrders = (req, res, next) => {
     Order.find({ 'user.userId': req.user._id })
         .then(orders => {
             res.render('pages/orders', {
-                //pageTitle: 'Your Orders',
+                pageTitle: 'Your Orders',
                 orders: orders
             });
         })

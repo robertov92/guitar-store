@@ -16,6 +16,7 @@
     <!--products-->
     <div class="col-span-1 lg:col-span-2 xl:col-span-3">
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <% if (prods.length > 0) { %> 
             <% for (let product of prods) { %> 
                 <div class="bg-white shadow rounded overflow-hidden group flex flex-col justify-between">
                     <div class="relative">
@@ -49,6 +50,9 @@
                         </form>
                     </div>
                 </div>
+            <% } %>
+            <% } else { %>
+            <h1 class="text-gray-800 text-xl font-medium uppercase">You don't have any products listed.</h1>
             <% } %> 
         </div>
 

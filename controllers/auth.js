@@ -5,6 +5,7 @@ const User = require('../models/user');
 
 exports.getSignup = (req, res, next) => {
     res.render('pages/signup', {
+        pageTitle: 'Singup',
         errorMessage: req.flash('error'),
         oldInput: { email: '', password: '', confirmPassword: '' },
         validationErrors: []
@@ -17,6 +18,7 @@ exports.postSignup = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).render('pages/signup', {
+            pageTitle: 'Signup',
             errorMessage: errors.array()[0].msg,
             oldInput: {
                 email: email,
@@ -54,6 +56,7 @@ exports.postSignup = (req, res, next) => {
 
 exports.getLogin = (req, res, next) => {
     res.render('pages/login', {
+        pageTitle: 'Login',
         errorMessage: req.flash('error'),
         oldInput: { email: '', password: '' },
         validationErrors: []
@@ -66,7 +69,7 @@ exports.postLogin = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).render('pages/login', {
-            //pageTitle: 'Login',
+            pageTitle: 'Login',
             errorMessage: errors.array()[0].msg,
             oldInput: { email: email, password: password },
             validationErrors: errors.array()
@@ -76,7 +79,7 @@ exports.postLogin = (req, res, next) => {
         .then(user => {
             if (!user) {
                 return res.status(422).render('pages/login', {
-                    //pageTitle: 'Login',
+                    pageTitle: 'Login',
                     errorMessage: 'Invalid email',
                     oldInput: { email: email, password: password },
                     validationErrors: []
@@ -94,7 +97,7 @@ exports.postLogin = (req, res, next) => {
                         });
                     }
                     return res.status(422).render('pages/login', {
-                        //pageTitle: 'Login',
+                        pageTitle: 'Login',
                         errorMessage: 'Invalid password',
                         oldInput: { email: email, password: password },
                         validationErrors: []

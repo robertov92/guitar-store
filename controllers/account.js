@@ -3,16 +3,21 @@ const { validationResult } = require('express-validator/check');
 const Product = require('../models/product');
 
 exports.getAccount = (req, res, next) => {
-    res.render('pages/account', {});
+    res.render('pages/account', {
+        pageTitle: 'Your Account'
+    });
 }
 
 exports.getAccInfo = (req, res, next) => {
-    res.render('pages/profile-info', {});
+    res.render('pages/profile-info', {
+        pageTitle: 'Your Info'
+    });
 }
 
 // gets 'Add Product' page
 exports.getAddProduct = (req, res, next) => {
     res.render('pages/add-product', {
+        pageTitle: 'Add New Product',
         editing: false,
         errorMessage: null,
         validationErrors: [],
@@ -33,6 +38,7 @@ exports.getEditProduct = (req, res, next) => {
                 return res.redirect('/account');
             }
             res.render('pages/add-product', {
+                pageTitle: 'Edit Product',
                 editing: editMode,
                 product: product,
                 hasError: false,
@@ -59,6 +65,7 @@ exports.postAddProduct = (req, res, next) => {
 
     if (!errors.isEmpty()) {
         return res.status(422).render('pages/add-product', {
+            pageTitle: 'Add New Product',
             editing: false,
             hasError: true,
             product: { title, stock, brand, category, imageUrl, price, description },
@@ -102,15 +109,16 @@ exports.postEditProduct = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).render('pages/add-product', {
+            pageTitle: 'Add New Product',
             editing: true,
             hasError: true,
-            product: { title: updatedTitle, stock:updatedStock, brand:updatedBrand, category:updatedCategory, imageUrl: updatedImageUrl, price: updatedPrice, description: updatedDesc, _id: prodId },
+            product: { title: updatedTitle, stock: updatedStock, brand: updatedBrand, category: updatedCategory, imageUrl: updatedImageUrl, price: updatedPrice, description: updatedDesc, _id: prodId },
             errorMessage: errors.array()[0].msg,
             validationErrors: errors.array()
         });
     }
     Product.findById(prodId)
-    .then(product => {
+        .then(product => {
             // user validation
             if (product.userId.toString() !== req.user._id.toString()) {
                 return res.redirect('/account/');
@@ -149,8 +157,9 @@ exports.postDeleteProduct = (req, res, next) => {
 // gets Admin-Prods page
 exports.getAdminProds = (req, res, next) => {
     Product.find({ userId: req.user._id })
-    .then(products => {
+        .then(products => {
             res.render('pages/admin-prods', {
+                pageTitle: 'Your Listed Products',
                 prods: products
             });
         })
