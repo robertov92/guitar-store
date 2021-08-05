@@ -27,6 +27,8 @@ routes.get('/shop-filter', shopControllers.getFilteredCatalog);
 
 routes.get('/shop-search', shopControllers.getSearchedCatalog);
 
+routes.get('/contact-us', shopControllers.getContact);
+
 routes.get('/', shopControllers.getIndex);
 
 module.exports = routes;

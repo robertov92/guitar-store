@@ -237,3 +237,7 @@ exports.postOrder = (req, res, next) => {
             res.redirect('/project1/500');
         });
 };
+
+exports.getContact = (req, res, next) => {
+    res.render('pages/contact-us', { pageTitle: 'Contact Us' })
+}
