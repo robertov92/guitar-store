@@ -1,40 +1,37 @@
 <div class="col-span-1">
     <div class="px-4 py-3 shadow flex items-center gap-4">
         <div class="flex-shrink-0">
-            <img src="/images/icon.png" alt="Profile pic" class="rounded-full w-14 h-14 border border-gray-300 p-1 object-cover">
+            <img src="/images/user.png" alt="Profile pic" class="rounded-full w-14 h-14 border border-gray-300 p-1 object-cover">
         </div>
         <div class="flex-grow">
-            <p class="text-gray-600">Hello,</p>
-            <h4 class="text-gray-800 font-medium">Lolo Manson</h4>
+            <p class="text-gray-600">Welcome Back!</p>
         </div>
     </div>
 
     <div class="my-6 bg-white shadow rounded p-4 divide-y divide-gray-200 space-y-4 text-gray-600">
         <div class="space-y-1 pl-8">
-            <a href="/account" class="relative text-primary block font-medium capitalize">
-                <span class="absolute -left-8 top-0 text-base"><i class="fas fa-id-card"></i></span>Manage account
+            <a href="/account" class="relative block font-medium capitalize <% if (pageTitle == 'My Account') { %> text-primary <% } %>">
+                <span class="absolute -left-8 top-0 text-base"><i class="fas fa-id-card"></i></span>My account
             </a>
-            <a href="/account/info" class="relative hover:text-primary block capitalize transition">Profile info</a>
-            <a href="#" class="relative hover:text-primary block capitalize transition">Manage address</a>
-            <a href="#" class="relative hover:text-primary block capitalize transition">Change password</a>
+            <a href="#" class="<% if (pageTitle == 'Change Password') { %> text-primary <% } %> relative hover:text-primary block capitalize transition">Change password</a>
         </div>
         <div class="space-y-1 pl-8 pt-4">
-            <a href="/account/admin-prods" class="relative hover:text-primary block font-medium capitalize">
+            <a href="/account/admin-prods" class="<% if (pageTitle == 'My Listed Products') { %> text-primary <% } %> relative hover:text-primary block font-medium capitalize">
                 <span class="absolute -left-8 top-0 text-base"><i class="fas fa-store-alt"></i></span>My store
             </a>
-            <a href="/account/add-product" class="relative hover:text-primary block capitalize transition">Add New Product</a>
+            <a href="/account/add-product" class="<% if (pageTitle == 'Add New Product') { %> text-primary <% } %> relative hover:text-primary block capitalize transition">Add New Product</a>
         </div>
         <div class="space-y-1 pl-8 pt-4">
-            <a href="/orders" class="relative hover:text-primary block font-medium capitalize">
+            <a href="/orders" class="<% if (pageTitle == 'My Orders') { %> text-primary <% } %> relative hover:text-primary block font-medium capitalize">
                 <span class="absolute -left-8 top-0 text-base"><i class="fas fa-gifts"></i></span>My orders
             </a>
         </div>
         <div class="space-y-1 pl-8 pt-4">
-            <a href="/wishlist" class="relative hover:text-primary block font-medium capitalize">
+            <a href="/wishlist" class="<% if (pageTitle == 'My Wishlist') { %> text-primary <% } %> relative hover:text-primary block font-medium capitalize">
                 <span class="absolute -left-8 top-0 text-base"><i class="fas fa-heart"></i></span>My wishlist
             </a>
         </div>
-        <div class="space-y-1 pl-8 pt-4">
+        <div class="relative hover:text-primary space-y-1 pl-8 pt-4">
             <form class="relative" action="/logout" method="POST">
                 <button type="submit"><span class="absolute -left-8 top-0 text-base"><i class="fas fa-sign-out-alt"></i></span>Logout</button>
             </form>

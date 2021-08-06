@@ -1,27 +1,30 @@
 const routes = require('express').Router();
+
 const shopControllers = require('../controllers/index');
+const isAuth = require('../middleware/is-auth');
+
 
 routes.get('/shop', shopControllers.getCatalog);
 
 routes.get('/shop/:productId', shopControllers.getProduct);
 
-routes.get('/cart', shopControllers.getCart);
+routes.get('/cart', isAuth, shopControllers.getCart);
 
-routes.post('/cart', shopControllers.postCart);
+routes.post('/cart', isAuth, shopControllers.postCart);
 
-routes.post('/reduce-cart', shopControllers.reduceCart);
+routes.post('/reduce-cart', isAuth, shopControllers.reduceCart);
 
-routes.post('/cart-delete-item', shopControllers.postCartDeleteProduct);
+routes.post('/cart-delete-item', isAuth, shopControllers.postCartDeleteProduct);
 
-routes.get('/wishlist', shopControllers.getWishlist);
+routes.get('/wishlist', isAuth, shopControllers.getWishlist);
 
-routes.post('/wishlist', shopControllers.postWishlist);
+routes.post('/wishlist', isAuth, shopControllers.postWishlist);
 
-routes.post('/wishlist-delete-item', shopControllers.postWishlistDeleteProduct);
+routes.post('/wishlist-delete-item', isAuth, shopControllers.postWishlistDeleteProduct);
 
-routes.post('/create-order', shopControllers.postOrder);
+routes.post('/create-order', isAuth, shopControllers.postOrder);
 
-routes.get('/orders', shopControllers.getOrders);
+routes.get('/orders', isAuth, shopControllers.getOrders);
 
 routes.get('/shop-filter', shopControllers.getFilteredCatalog);
 
@@ -30,5 +33,6 @@ routes.get('/shop-search', shopControllers.getSearchedCatalog);
 routes.get('/contact-us', shopControllers.getContact);
 
 routes.get('/', shopControllers.getIndex);
+
 
 module.exports = routes;

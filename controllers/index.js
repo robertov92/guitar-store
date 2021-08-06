@@ -88,7 +88,7 @@ exports.getCart = (req, res, next) => {
         .then(user => {
             const products = user.cart.items;
             res.render('pages/cart', {
-                pageTitle: 'Your Cart',
+                pageTitle: 'My Cart',
                 products: products
             });
         })
@@ -153,7 +153,7 @@ exports.getWishlist = (req, res, next) => {
         .then(user => {
             const products = user.wishlist.items;
             res.render('pages/wishlist', {
-                pageTitle: 'Your Wishlist',
+                pageTitle: 'My Wishlist',
                 products: products
             });
         })
@@ -198,7 +198,7 @@ exports.getOrders = (req, res, next) => {
     Order.find({ 'user.userId': req.user._id })
         .then(orders => {
             res.render('pages/orders', {
-                pageTitle: 'Your Orders',
+                pageTitle: 'My Orders',
                 orders: orders
             });
         })

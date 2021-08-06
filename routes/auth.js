@@ -5,6 +5,7 @@ const authControllers = require('../controllers/auth');
 const alreadyLogedIn = require('../middleware/alreadyLogedIn');
 const User = require('../models/user');
 
+
 routes.get('/signup', alreadyLogedIn, authControllers.getSignup);
 
 routes.post('/signup', [
@@ -33,5 +34,6 @@ routes.post('/login', [
 ], authControllers.postLogin);
 
 routes.post('/logout', authControllers.postLogout);
+
 
 module.exports = routes;

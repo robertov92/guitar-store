@@ -4,13 +4,7 @@ const Product = require('../models/product');
 
 exports.getAccount = (req, res, next) => {
     res.render('pages/account', {
-        pageTitle: 'Your Account'
-    });
-}
-
-exports.getAccInfo = (req, res, next) => {
-    res.render('pages/profile-info', {
-        pageTitle: 'Your Info'
+        pageTitle: 'My Account'
     });
 }
 
@@ -159,7 +153,7 @@ exports.getAdminProds = (req, res, next) => {
     Product.find({ userId: req.user._id })
         .then(products => {
             res.render('pages/admin-prods', {
-                pageTitle: 'Your Listed Products',
+                pageTitle: 'My Listed Products',
                 prods: products
             });
         })
