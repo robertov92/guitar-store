@@ -13,9 +13,9 @@
 </div>
 
 <!--product view-->
-<div class="container grid grid-cols-2 gap-6">
+<div class="container grid md:grid-cols-2 md:gap-6">
     
-    <div>
+    <div class="mb-8">
         <img src="<%= product.imageUrl %>" alt="Product">
         <div class="grid grid-cols-5 gap-4 mt-4">
             <img src="<%= product.imageUrl %>" class="w-full cursor-pointer border border-primary" alt="Product">
@@ -93,7 +93,7 @@
 <!-- products -->
 <div class="container py-16">
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">you may also like</h2>
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <% for (let product of products) { %> 
             <%- include('../includes/product-sm.ejs', {product}) %>
         <% } %>
