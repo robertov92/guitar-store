@@ -1,4 +1,4 @@
 node_modules/
 # generate this css file with: 'npm run build:css'
-# public/css/tailwind.css
+public/css/tailwind.css
 .env
