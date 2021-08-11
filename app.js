@@ -6,12 +6,16 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
+const cors = require('cors');
 
 const shopRoutes = require('./routes');
 const accountRoutes = require('./routes/account');
 const authRoutes = require('./routes/auth');
 
+const PORT = 10000;
+
 const app = express();
+app.use(cors({ origin: "*" }));
 const store = new MongoDBStore({ uri: process.env.MONGODB_URI, collection: 'sessions' });
 
 app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false, store: store }))
@@ -55,7 +59,7 @@ app.use(express.static('public'))
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log(`Listening on port ${process.env.PORT}`)
+        app.listen(PORT, () => {
+            console.log(`Listening on port ${PORT}`)
         });
     });
